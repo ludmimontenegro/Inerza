@@ -155,6 +155,7 @@ p{
 
 .nav-principal ul{
   display: flex;
+  justify-content: flex-end;
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -210,7 +211,7 @@ p{
 
 .bienvenida p{
   max-width: 60ch;
-  margin: 0 auto;
+  margin: 16px auto 0;
 }
 
 /* ==========================================================================
@@ -589,6 +590,18 @@ p{
   .servicio-item{
     gap: 16px;
   }
+}
+
+.servicios-figura{
+  margin-bottom: 40px;
+}
+
+.servicios-figura img{
+  display: block;
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  border-radius: var(--radio);
 }
 
 /* ==========================================================================
