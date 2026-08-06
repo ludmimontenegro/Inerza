@@ -56,7 +56,27 @@ ul{
 .envolvente{
   max-width: var(--ancho-maximo);
   margin: 0 auto;
-  padding: 0 28px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 480px){
+  .envolvente{
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.seccion{
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+@media (min-width: 1024px){
+  .seccion{
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
 }
 
 /* ==========================================================================
@@ -175,8 +195,16 @@ p{
    ========================================================================== */
 
 .hero{
-  padding: 30px 0;
+  padding-top: 16px;
+  padding-bottom: 16px;
   text-align: center;
+}
+
+@media (min-width: 1024px){
+  .hero{
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 .hero__botones{
@@ -205,22 +233,19 @@ p{
 
 .bienvenida{
   background-color: #ffffff;
-  padding: 30px 0;
+  padding: 16px 0;
   text-align: center;
 }
 
-.bienvenida p{
-  max-width: 60ch;
-  margin: 16px auto 0;
+@media (min-width: 1024px){
+  .bienvenida{
+    padding: 40px 0;
+  }
 }
-
 /* ==========================================================================
    7. Secciones generales
    ========================================================================== */
 
-.seccion{
-  padding: 30px 0;
-}
 
 .seccion__encabezado{
   text-align: center;
@@ -244,8 +269,35 @@ p{
 
 .tarjetas{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 1024px){
+  .tarjetas{
+    gap: 30px;
+  }
+}
+
+@media (min-width: 640px){
+  .tarjetas{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px){
+  .tarjetas{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+.tarjeta figure img{
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
 }
 
 .tarjeta{
@@ -292,11 +344,18 @@ p{
 }
 
 .tarjeta__cuerpo{
-  padding: 24px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   flex: 1;
+}
+
+@media (min-width: 1024px){
+  .tarjeta__cuerpo{
+    padding: 24px;
+    gap: 10px;
+  }
 }
 
 .tarjeta__cuerpo p{
@@ -319,8 +378,20 @@ p{
 
 .galeria{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 22px;
+}
+
+@media (min-width: 640px){
+  .galeria{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px){
+  .galeria{
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .galeria figure{
@@ -362,8 +433,14 @@ p{
    ========================================================================== */
 
 .franja{
-  padding: 60px 0;
+  padding: 36px 0;
   text-align: center;
+}
+
+@media (min-width: 1024px){
+  .franja{
+    padding: 60px 0;
+  }
 }
 
 .franja--secundaria{
@@ -400,8 +477,15 @@ p{
 
 .contacto-lista{
   display: grid;
-  gap: 24px;
-  margin-top: 32px;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+@media (min-width: 1024px){
+  .contacto-lista{
+    gap: 24px;
+    margin-top: 32px;
+  }
 }
 
 .contacto-item{
@@ -423,15 +507,36 @@ p{
 .pie{
   background-color: var(--color-primario);
   color: var(--color-texto-claro);
-  padding: 56px 0 28px;
+  padding: 32px 0 20px;
+}
+
+@media (min-width: 1024px){
+  .pie{
+    padding: 56px 0 28px;
+  }
 }
 
 .pie__grid{
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
-  gap: 36px;
+  grid-template-areas:
+    "marca"
+    "enlaces"
+    "contacto";
+  gap: 32px;
   padding-bottom: 32px;
   border-bottom: 1px solid rgba(244,239,230,0.2);
+}
+
+.pie__grid > div:nth-child(1){
+  grid-area: marca;
+}
+
+.pie__grid > div:nth-child(2){
+  grid-area: enlaces;
+}
+
+.pie__grid > div:nth-child(3){
+  grid-area: contacto;
 }
 
 .pie__marca{
@@ -473,34 +578,34 @@ p{
   margin-top: 22px;
 }
 
+/* Tablet: 2 columnas — marca arriba ocupando todo, enlaces y contacto lado a lado */
+@media (min-width: 640px){
+  .pie__grid{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "marca marca"
+      "enlaces contacto";
+  }
+}
+
+/* Desktop: 3 columnas en una sola fila */
+@media (min-width: 1024px){
+  .pie__grid{
+    grid-template-columns: 1.3fr 1fr 1fr;
+    grid-template-areas:
+      "marca enlaces contacto";
+  }
+}
+
 /* ==========================================================================
    13. Responsive
    ========================================================================== */
-
-@media (max-width: 900px){
-  .tarjetas{
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .pie__grid{
-    grid-template-columns: 1fr 1fr;
-  }
-}
 
 @media (max-width: 640px){
   .nav-principal ul{
     gap: 16px;
   }
-
-  .tarjetas{
-    grid-template-columns: 1fr;
-  }
-
-  .pie__grid{
-    grid-template-columns: 1fr;
-  }
 }
-
 
 /* ==========================================================================
    14. FAQ — bloques temáticos
@@ -574,12 +679,29 @@ p{
 .servicio-item__numero{
   font-family: var(--fuente-base);
   font-weight: 700;
-  font-size: 4rem;
+  font-size: 2.4rem;
   color: var(--color-secundario);
   flex: 0 0 auto;
-  min-width: 90px;
+  min-width: 55px;
   line-height: 1;
 }
+
+@media (min-width: 1024px){
+  .servicio-item__numero{
+    font-size: 4rem;
+    min-width: 90px;
+  }
+}
+
+
+.servicio-item__texto{
+  min-width: 0;
+}
+
+.servicio-item__texto p{
+  color: #55524d;
+  max-width: 60ch;
+} 
 
 .servicio-item__texto p{
   color: #55524d;
@@ -611,11 +733,16 @@ p{
 .sobre-mi{
   max-width: 700px;
   margin: 0 auto;
-  padding: 48px 0;
+  padding: 24px 0;
   background-color: var(--color-acento);
   border-left: 6px solid var(--color-secundario);
 }
 
+@media (min-width: 1024px){
+  .sobre-mi{
+    padding: 48px 0;
+  }
+}
 .sobre-mi .tarjeta__cuerpo{
   max-width: 65ch;
   margin: 0 auto;
